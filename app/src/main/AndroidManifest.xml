@@ -18,19 +18,20 @@
         tools:targetApi="33"
         >
         <activity
-            android:name=".BookDetailActivity"
-            android:exported="false"
-            />
+            android:name=".ui.book.detail.BookDetailActivity"
+            android:exported="true"
+            android:theme="@style/Theme.StorySpotter" />
+
         <activity
             android:name=".ui.book.BookActivity"
             android:exported="true"
-            android:theme="@style/Theme.StorySpotter"
-            />
+            android:theme="@style/Theme.StorySpotter" />
+
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.StorySpotter"
-            />
+            android:theme="@style/Theme.StorySpotter" />
+
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"

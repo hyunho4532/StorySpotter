@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
@@ -18,8 +19,8 @@ import com.hyun.storyspotter.ui.book.detail.BookDetailActivity
 class BookAdapter(private val books: List<BookItem>) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_search_book, parent, false)
-        return BookViewHolder(view)
+        val binding = ItemSearchBookBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return BookViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
@@ -31,13 +32,11 @@ class BookAdapter(private val books: List<BookItem>) : RecyclerView.Adapter<Book
         return books.size
     }
 
-    class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private lateinit var itemSearchBookBinding: ItemSearchBookBinding
+    class BookViewHolder(private val binding: ItemSearchBookBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(book: BookItem) {
-            itemSearchBookBinding.titleTextView.text = book.title
-            itemSearchBookBinding.authorTextView.text = book.author
+            binding.titleTextView.text = book.title
+            binding.authorTextView.text = book.author
 
             val options = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_foreground)
@@ -45,11 +44,15 @@ class BookAdapter(private val books: List<BookItem>) : RecyclerView.Adapter<Book
                 .format(DecodeFormat.PREFER_ARGB_8888) // 이미지 포맷 설정
                 .encodeQuality(0)
 
-            Glide.with(itemView)
+            Glide.with(binding.root)
                 .load(book.image)
                 .apply(options)
-                .into(itemSearchBookBinding.bookImageView)
+                .into(binding.bookImageView)
+
+            binding.root.setOnClickListener {
+                val intent = Intent(binding.root.context, BookDetailActivity::class.java)
+                ContextCompat.startActivity(binding.root.context, intent, null)
+            }
         }
     }
-
 }
