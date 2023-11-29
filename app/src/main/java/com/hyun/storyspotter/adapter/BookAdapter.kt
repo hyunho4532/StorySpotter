@@ -1,6 +1,8 @@
 package com.hyun.storyspotter.adapter
 
+import android.util.Pair
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -48,8 +50,10 @@ class BookAdapter(
                 .apply(options)
                 .into(binding.bookImageView)
 
+            val pair = Pair<View, String>(binding.bookImageView, "imageTran")
+
             binding.root.setOnClickListener {
-                transitionAnimation.moveBookDetail(binding.root.context, book)
+                transitionAnimation.moveBookDetail(binding.root.context, book.image, book.title, pair)
             }
         }
     }
