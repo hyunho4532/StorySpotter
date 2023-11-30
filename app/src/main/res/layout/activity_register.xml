@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_register_sub_title" />
 
         <Button
-            android:id="@+id/btn_"
+            android:id="@+id/btn_google"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
