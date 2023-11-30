@@ -3,8 +3,6 @@ package com.hyun.storyspotter.ui.register
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -12,21 +10,34 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.FirebaseDatabase
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityRegisterBinding
 import com.hyun.storyspotter.ui.book.BookActivity
+import java.util.*
+import kotlin.collections.HashMap
 
 class RegisterActivity : AppCompatActivity() {
-
-    private lateinit var googleSignInOptions: GoogleSignInOptions
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var registerBinding: ActivityRegisterBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
+
+    val RC_SIGN_IN = 20
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         registerBinding = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
-        googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+
+        val googleSignInOptions: GoogleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail().build()
 
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
@@ -34,30 +45,47 @@ class RegisterActivity : AppCompatActivity() {
         registerBinding.btnGoogle.setOnClickListener {
             googleSignIn()
         }
+
     }
 
     private fun googleSignIn() {
-        val signInIntent: Intent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, 1000)
+        val intent: Intent = googleSignInClient.signInIntent
+        startActivityForResult(intent, RC_SIGN_IN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 1000) {
+        if (requestCode == RC_SIGN_IN) {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
 
             try {
-                task.getResult(ApiException::class.java)
-                navigateToSecondActivity()
-            } catch (e: ApiException) {
-                Toast.makeText(applicationContext, "문제가 발생하였습니다.", Toast.LENGTH_SHORT).show()
+                val account: GoogleSignInAccount = task.getResult(ApiException::class.java)
+                firebaseAuth(account.idToken)
+
+            } catch(e: Exception) {
+
             }
         }
     }
 
-    private fun navigateToSecondActivity() {
-        val intent = Intent(this@RegisterActivity, BookActivity::class.java)
-        startActivity(intent)
+    private fun firebaseAuth(idToken: String?) {
+        val credential: AuthCredential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential).addOnCompleteListener {
+            if (it.isSuccessful) {
+                val user: FirebaseUser = auth.currentUser!!
+
+                val map: HashMap<String, String> = HashMap()
+
+                map["id"] = user.uid
+                map["name"] = user.displayName.toString()
+                map["profile"] = user.photoUrl.toString()
+
+                database.reference.child("users").child(user.uid).setValue(map)
+
+                val intent = Intent(this@RegisterActivity, BookActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 }

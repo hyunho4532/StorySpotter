@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1012077561860",
+    "firebase_url": "https://storyspo-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "storyspo",
     "storage_bucket": "storyspo.appspot.com"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.hyun.storyspotter"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1012077561860-eemu8m8ebdv6p5k2019glerelhmm973i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hyun.storyspotter",
+            "certificate_hash": "109298feb817a01739e882f845d43a3d25c2a7f7"
+          }
+        },
+        {
+          "client_id": "1012077561860-59bkev4gpq6duq4ee7ngfp78vlcmg8nj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBYKplGEP0I6qYKx5HM2r8uGYjrs8cSCqA"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012077561860-59bkev4gpq6duq4ee7ngfp78vlcmg8nj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
