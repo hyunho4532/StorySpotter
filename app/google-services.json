@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1012077561860",
+    "project_id": "storyspo",
+    "storage_bucket": "storyspo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012077561860:android:e3f13a48898e3297f0cd51",
+        "android_client_info": {
+          "package_name": "com.hyun.storyspotter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYKplGEP0I6qYKx5HM2r8uGYjrs8cSCqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
