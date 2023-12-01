@@ -15,7 +15,6 @@ import com.hyun.storyspotter.ui.register.RegisterActivity
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
-    private lateinit var addAnimatorListener: AddAnimatorListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +28,7 @@ class SplashActivity : AppCompatActivity() {
             override fun onAnimationEnd(p0: Animator) {
                 val intent = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             }
 
             override fun onAnimationCancel(p0: Animator) {

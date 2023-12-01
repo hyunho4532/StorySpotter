@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="splash_screen_background_color" type="color">@color/white</item>
+    <item name="auth_screen_nickname_color" type="color">@color/black</item>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
