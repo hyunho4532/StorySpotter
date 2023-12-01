@@ -10,6 +10,7 @@ import com.hyun.storyspotter.R
 import com.hyun.storyspotter.adapter.OnboardingAdapter
 import com.hyun.storyspotter.model.OnboardingItem
 import com.hyun.storyspotter.ui.book.BookActivity
+import com.hyun.storyspotter.ui.register.RegisterActivity
 import com.hyun.storyspotter.viewmodel.OnBoardingViewModel
 
 
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         val buttonOnBoardingAction: MaterialButton = findViewById(R.id.buttonOnboardingAction)
 
         buttonOnBoardingAction.setOnClickListener {
-            val intent = Intent(this@MainActivity, BookActivity::class.java)
+            val intent = Intent(this@MainActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
     }
