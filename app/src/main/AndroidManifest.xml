@@ -18,6 +18,11 @@
         tools:targetApi="33"
         >
         <activity
+            android:name=".ui.register.auth.AuthActivity"
+            android:exported="true"
+            android:theme="@style/Theme.StorySpotter"
+            />
+        <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="true"
             android:theme="@style/Theme.StorySpotter"

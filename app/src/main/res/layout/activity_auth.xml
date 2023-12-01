@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.register.auth.AuthActivity">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_google_profile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="58dp"
+            android:src="@drawable/icon_onboarding_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_welcome_main_story_spotter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="님!"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_google_profile"
+            app:layout_constraintStart_toEndOf="@+id/iv_google_profile"
+            app:layout_constraintTop_toTopOf="@+id/iv_google_profile" />
+
+        <TextView
+            android:id="@+id/tv_welcome_sub_story_spotter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="스토리 스포터를 이용해주셔서 감사합니다!"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/iv_google_profile"
+            app:layout_constraintTop_toBottomOf="@+id/iv_google_profile" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

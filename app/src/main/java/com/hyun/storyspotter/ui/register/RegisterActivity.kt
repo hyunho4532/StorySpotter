@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityRegisterBinding
 import com.hyun.storyspotter.ui.book.BookActivity
+import com.hyun.storyspotter.ui.register.auth.AuthActivity
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -83,7 +84,8 @@ class RegisterActivity : AppCompatActivity() {
 
                 database.reference.child("users").child(user.uid).setValue(map)
 
-                val intent = Intent(this@RegisterActivity, BookActivity::class.java)
+                val intent = Intent(this@RegisterActivity, AuthActivity::class.java)
+                intent.putExtra("photoUrl", user.photoUrl.toString())
                 startActivity(intent)
             }
         }

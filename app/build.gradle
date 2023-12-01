@@ -69,4 +69,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.4'
+
+    // 원형 이미지뷰
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

@@ -1,5 +1,6 @@
 package com.hyun.storyspotter.repository
 
+import android.content.Context
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -10,7 +11,7 @@ class GoogleAuthRepository {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
 
-    fun firebaseAuth(idToken: String?) {
+    fun firebaseAuth(idToken: String?, context: Context) {
         val credential: AuthCredential = GoogleAuthProvider.getCredential(idToken, null)
 
         auth.signInWithCredential(credential).addOnCompleteListener {
