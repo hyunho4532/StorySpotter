@@ -12,6 +12,7 @@ import com.hyun.storyspotter.R
 import com.hyun.storyspotter.common.MakeTransitionAnimation
 import com.hyun.storyspotter.databinding.ItemSearchBookBinding
 import com.hyun.storyspotter.model.BookItem
+import java.security.PrivateKey
 
 class BookAdapter(
     private val books: List<BookItem>,
