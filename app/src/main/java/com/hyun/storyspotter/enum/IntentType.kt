@@ -1,4 +1,6 @@
 package com.hyun.storyspotter.enum
 
-class IntentType {
+enum class IntentType {
+    LikeMove,
+    UnLikeMove,
 }
