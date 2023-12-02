@@ -1,5 +1,6 @@
 package com.hyun.storyspotter.adapter
 
+import android.annotation.SuppressLint
 import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +37,7 @@ class BookAdapter(
 
     inner class BookViewHolder(private val binding: ItemSearchBookBinding) : RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("NotifyDataSetChanged")
         fun bind(book: BookItem) {
             binding.titleTextView.text = book.title
             binding.authorTextView.text = book.author

@@ -26,5 +26,9 @@ class BookDetailActivity : AppCompatActivity() {
             .into(activityBookDetailBinding.ivDetailBook)
 
         activityBookDetailBinding.tvDetailBook.text = title
+
+        activityBookDetailBinding.btnBookDetailLike.setOnClickListener {
+
+        }
     }
 }
