@@ -26,6 +26,7 @@ class AuthActivity : AppCompatActivity() {
 
         authBinding.btnAuthInsert.setOnClickListener {
             val intent = Intent(this@AuthActivity, BookActivity::class.java)
+            intent.putExtra("nickName", authBinding.usernameTextField.text.toString())
             startActivity(intent)
         }
     }

@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "1012077561860-kq3f3pql7f2u0ho8j6akqdjsjnido24m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hyun.storyspotter",
+            "certificate_hash": "79c5454d0fe7ea785e81936c121cdc8a01740593"
+          }
+        },
+        {
           "client_id": "1012077561860-59bkev4gpq6duq4ee7ngfp78vlcmg8nj.apps.googleusercontent.com",
           "client_type": 3
         }

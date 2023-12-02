@@ -3,6 +3,7 @@ package com.hyun.storyspotter.ui.register
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -17,9 +18,8 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityRegisterBinding
-import com.hyun.storyspotter.ui.book.BookActivity
 import com.hyun.storyspotter.ui.register.auth.AuthActivity
-import java.util.*
+import com.hyun.storyspotter.viewmodel.GoogleAuthViewModel
 import kotlin.collections.HashMap
 
 class RegisterActivity : AppCompatActivity() {
@@ -28,7 +28,9 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
 
-    val RC_SIGN_IN = 20
+    private lateinit var googleAuthViewModel: GoogleAuthViewModel
+
+    private val RC_SIGN_IN = 20
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +48,6 @@ class RegisterActivity : AppCompatActivity() {
         registerBinding.btnGoogle.setOnClickListener {
             googleSignIn()
         }
-
     }
 
     private fun googleSignIn() {
@@ -65,7 +66,7 @@ class RegisterActivity : AppCompatActivity() {
                 firebaseAuth(account.idToken)
 
             } catch(e: Exception) {
-
+                Log.d("RegisterActivity", e.printStackTrace().toString())
             }
         }
     }
@@ -84,7 +85,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 database.reference.child("users").child(user.uid).setValue(map)
 
-                val intent = Intent(this@RegisterActivity, AuthActivity::class.java)
+                val intent = Intent(registerBinding.root.context, AuthActivity::class.java)
                 intent.putExtra("photoUrl", user.photoUrl.toString())
                 startActivity(intent)
             }
