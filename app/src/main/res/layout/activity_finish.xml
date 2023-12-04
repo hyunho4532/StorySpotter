@@ -12,9 +12,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="46dp"
             android:text="Guest"
             android:textSize="24sp"
+            android:fontFamily="@font/font_family_kbo_dia"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,6 +28,7 @@
             android:layout_marginTop="48dp"
             android:text="님, 결과를 확인해주세요~!"
             android:textSize="22sp"
+            android:fontFamily="@font/font_family_kbo_dia"
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/tv_finish_user"
             app:layout_constraintTop_toTopOf="parent" />
@@ -57,11 +59,75 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="42dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_welcome_like_book"
             tools:srcCompat="@tools:sample/avatars" />
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:text="추가 등록"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_welcome_like_book"
+            app:layout_constraintStart_toEndOf="@+id/tv_welcome_like_book"
+            app:layout_constraintTop_toTopOf="@+id/tv_welcome_like_book" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_welcome_like_book"
+            app:layout_constraintStart_toEndOf="@+id/iv_welcome_like_book"
+            app:layout_constraintTop_toTopOf="@+id/iv_welcome_like_book"
+            app:srcCompat="@drawable/drawable_book_like_image" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="최대 2개까지 등록할 수 있어요!!"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_welcome_like_book"
+            app:layout_constraintTop_toBottomOf="@+id/tv_welcome_like_book" />
+
+        <TextView
+            android:id="@+id/tv_hobby_main_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="60dp"
+            android:text="취미는 "
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_welcome_like_book" />
+
+        <TextView
+            android:id="@+id/tv_hobby_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="놀기"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_hobby_main_text"
+            app:layout_constraintStart_toEndOf="@+id/tv_hobby_main_text"
+            app:layout_constraintTop_toTopOf="@+id/tv_hobby_main_text" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="인가요?"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_hobby_text"
+            app:layout_constraintStart_toEndOf="@+id/tv_hobby_text"
+            app:layout_constraintTop_toTopOf="@+id/textView7" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
