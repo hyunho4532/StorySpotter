@@ -17,16 +17,5 @@ class FinishViewModel : ViewModel() {
         onSuccess: (String) -> Unit,
         onFailure: () -> Unit
     ) {
-        val userReference = database.reference.child("users").child(userId.uid)
-        userReference.child("username").addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val username = dataSnapshot.value.toString()
-                onSuccess(username)
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                onFailure()
-            }
-        })
     }
 }

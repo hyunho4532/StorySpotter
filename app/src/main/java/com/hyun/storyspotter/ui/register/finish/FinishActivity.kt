@@ -2,20 +2,22 @@ package com.hyun.storyspotter.ui.register.finish
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityFinishBinding
-import com.hyun.storyspotter.viewmodel.FinishViewModel
 
 class FinishActivity : AppCompatActivity() {
 
     private lateinit var activityFinishBinding: ActivityFinishBinding
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
-    private lateinit var finishViewModel: FinishViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +34,24 @@ class FinishActivity : AppCompatActivity() {
             .load(imageUrl)
             .into(activityFinishBinding.ivWelcomeLikeBook)
 
-        finishViewModel.getUsername(user, database, { username ->
-            activityFinishBinding.tvFinishUser.text = username
-        }) {
+        val userReference = database.reference.child("users").child(user.uid)
+        userReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (snapshot in dataSnapshot.children) {
+                        val username = dataSnapshot.child("username").value.toString()
+                        val hobby = dataSnapshot.child("hobby").value.toString()
 
-        }
+                        activityFinishBinding.tvFinishUser.text = username
+                        activityFinishBinding.tvHobbyText.text = hobby
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // 에러 처리
+            }
+        })
     }
 
 }
