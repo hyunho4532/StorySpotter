@@ -45,7 +45,11 @@ class FinishActivity : AppCompatActivity() {
 
         activityFinishBinding.btnBookSearchLikeAdd.setOnClickListener {
             val intent = Intent(this@FinishActivity, BookActivity::class.java)
-            intent.putExtra("imageType", imageType)
+            intent.putExtra("imageType", imageType.toString())
+
+            Log.d("ImageTypeString", imageType.toString())
+
+            intent.putExtra("username", activityFinishBinding.tvFinishUser.text.toString())
             startActivity(intent)
         }
 
