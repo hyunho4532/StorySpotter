@@ -2,6 +2,7 @@ package com.hyun.storyspotter.ui.book
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyun.storyspotter.R
@@ -19,6 +20,8 @@ class BookActivity : AppCompatActivity() {
     private val bookSearchManager = BookSearchManager()
     private var imageType: ImageType = ImageType.UnAddImage
 
+    private lateinit var username: String
+
     private lateinit var bookBinding: ActivityBookBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,28 +29,28 @@ class BookActivity : AppCompatActivity() {
 
         bookBinding = DataBindingUtil.setContentView(this, R.layout.activity_book)
 
-        try {
-            val imageTypeString = intent.getStringExtra("imageType")
+        val imageTypeString = intent.getStringExtra("imageType")
+        Log.d("ImageTypeString", imageTypeString.toString())
+        val imageType = if (imageTypeString == "AddImage") {
+            ImageType.AddImage
+        } else {
+            ImageType.UnAddImage
+        }
+        bookBinding.imageType = imageType
 
-            val imageType = if (imageTypeString == "UnAddImage") {
-                ImageType.UnAddImage
-            } else {
-                ImageType.AddImage
-            }
-
-            bookBinding.imageType = imageType
-
-        } catch (e: NullPointerException) {
-            bookBinding.imageType = imageType
+        val username = intent.getStringExtra("username")
+        if (username != null) {
+            bookBinding.tvBookSearchText.text = username
+        } else {
+            bookBinding.tvBookSearchText.text = "Default Username"
         }
 
         val nickName = intent.getStringExtra("nickName")
+        bookBinding.tvBookSearchText.text = nickName.toString()
 
         bookBinding.recyclerView.layoutManager = LinearLayoutManager(this)
         bookAdapter = BookAdapter(bookList)
         bookBinding.recyclerView.adapter = bookAdapter
-
-        bookBinding.tvBookSearchText.text = nickName.toString()
 
         bookBinding.btnBookSearch.setOnClickListener {
             bookSearchManager.searchBooks(bookBinding.etBookSearch.text.toString(), bookBinding.etBookSearchCount.text.toString().toInt(), "0qMOlEnC8vFb9mMNLWKU", "pVr1B38BBk") { books ->
