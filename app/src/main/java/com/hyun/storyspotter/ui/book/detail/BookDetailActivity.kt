@@ -9,11 +9,14 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityBookDetailBinding
+import com.hyun.storyspotter.enum.ImageType
 import com.hyun.storyspotter.ui.register.finish.FinishActivity
 
 class BookDetailActivity : AppCompatActivity() {
 
     private lateinit var activityBookDetailBinding: ActivityBookDetailBinding
+
+    private var imageType: ImageType = ImageType.UnAddImage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

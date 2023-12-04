@@ -4,7 +4,7 @@ import android.animation.Animator
 import android.content.Context
 import android.content.Intent
 import com.airbnb.lottie.LottieAnimationView
-import com.hyun.storyspotter.ui.MainActivity
+import com.hyun.storyspotter.ui.main.MainActivity
 
 class AddAnimatorListener {
     fun addAnimatorListener(context: Context, lotti: LottieAnimationView) {

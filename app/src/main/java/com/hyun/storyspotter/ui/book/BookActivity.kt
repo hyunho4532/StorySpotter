@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.adapter.BookAdapter
 import com.hyun.storyspotter.databinding.ActivityBookBinding
+import com.hyun.storyspotter.enum.ImageType
 import com.hyun.storyspotter.manager.BookSearchManager
 import com.hyun.storyspotter.model.BookItem
 

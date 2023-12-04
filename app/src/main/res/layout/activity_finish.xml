@@ -65,7 +65,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_book_search_like_add"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="12dp"
@@ -75,15 +75,15 @@
             app:layout_constraintTop_toTopOf="@+id/tv_welcome_like_book" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/iv_welcome_like_book_second"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_marginStart="12dp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/iv_welcome_like_book"
             app:layout_constraintStart_toEndOf="@+id/iv_welcome_like_book"
             app:layout_constraintTop_toTopOf="@+id/iv_welcome_like_book"
-            app:srcCompat="@drawable/drawable_book_like_image" />
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/textView3"
@@ -127,7 +127,22 @@
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_hobby_text"
             app:layout_constraintStart_toEndOf="@+id/tv_hobby_text"
-            app:layout_constraintTop_toTopOf="@+id/textView7" />
+            app:layout_constraintTop_toTopOf="@+id/tv_hobby_text" />
+
+        <Button
+            android:id="@+id/btn_finish_auth_insert"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/font_family_kbo_dia"
+            android:text="회원 등록하기"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_hobby_main_text"
+            app:layout_constraintVertical_bias="1.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
