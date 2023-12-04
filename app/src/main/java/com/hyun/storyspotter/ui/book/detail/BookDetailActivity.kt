@@ -1,15 +1,13 @@
 package com.hyun.storyspotter.ui.book.detail
 
-import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Pair
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityBookDetailBinding
-import com.hyun.storyspotter.enum.ImageType
+import com.hyun.storyspotter.type.ImageType
 import com.hyun.storyspotter.ui.register.finish.FinishActivity
 
 class BookDetailActivity : AppCompatActivity() {

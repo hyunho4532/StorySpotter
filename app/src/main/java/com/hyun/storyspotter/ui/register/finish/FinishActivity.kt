@@ -1,5 +1,6 @@
 package com.hyun.storyspotter.ui.register.finish
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,12 +14,15 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityFinishBinding
+import com.hyun.storyspotter.type.ImageType
+import com.hyun.storyspotter.ui.book.BookActivity
 
 class FinishActivity : AppCompatActivity() {
 
     private lateinit var activityFinishBinding: ActivityFinishBinding
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
+    private var imageType: ImageType = ImageType.AddImage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +44,9 @@ class FinishActivity : AppCompatActivity() {
             .into(activityFinishBinding.ivWelcomeLikeBookSecond)
 
         activityFinishBinding.btnBookSearchLikeAdd.setOnClickListener {
-
+            val intent = Intent(this@FinishActivity, BookActivity::class.java)
+            intent.putExtra("imageType", imageType)
+            startActivity(intent)
         }
 
         val userReference = database.reference.child("users").child(user.uid)

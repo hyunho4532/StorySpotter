@@ -1,4 +1,4 @@
-package com.hyun.storyspotter.enum
+package com.hyun.storyspotter.type
 
 enum class ImageType {
     AddImage,

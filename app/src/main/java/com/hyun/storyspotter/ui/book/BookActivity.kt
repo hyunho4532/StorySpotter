@@ -1,25 +1,23 @@
 package com.hyun.storyspotter.ui.book
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.adapter.BookAdapter
 import com.hyun.storyspotter.databinding.ActivityBookBinding
-import com.hyun.storyspotter.enum.ImageType
 import com.hyun.storyspotter.manager.BookSearchManager
 import com.hyun.storyspotter.model.BookItem
+import com.hyun.storyspotter.type.ImageType
+import java.lang.NullPointerException
 
 class BookActivity : AppCompatActivity() {
 
     private lateinit var bookAdapter: BookAdapter
     private val bookList = mutableListOf<BookItem>()
     private val bookSearchManager = BookSearchManager()
+    private var imageType: ImageType = ImageType.UnAddImage
 
     private lateinit var bookBinding: ActivityBookBinding
 
@@ -27,6 +25,21 @@ class BookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         bookBinding = DataBindingUtil.setContentView(this, R.layout.activity_book)
+
+        try {
+            val imageTypeString = intent.getStringExtra("imageType")
+
+            val imageType = if (imageTypeString == "UnAddImage") {
+                ImageType.UnAddImage
+            } else {
+                ImageType.AddImage
+            }
+
+            bookBinding.imageType = imageType
+
+        } catch (e: NullPointerException) {
+            bookBinding.imageType = imageType
+        }
 
         val nickName = intent.getStringExtra("nickName")
 
