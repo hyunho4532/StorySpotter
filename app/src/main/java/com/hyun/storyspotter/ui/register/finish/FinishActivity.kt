@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -34,6 +35,14 @@ class FinishActivity : AppCompatActivity() {
             .load(imageUrl)
             .into(activityFinishBinding.ivWelcomeLikeBook)
 
+        Glide.with(activityFinishBinding.root)
+            .load(imageUrl)
+            .into(activityFinishBinding.ivWelcomeLikeBookSecond)
+
+        activityFinishBinding.btnBookSearchLikeAdd.setOnClickListener {
+
+        }
+
         val userReference = database.reference.child("users").child(user.uid)
         userReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -52,6 +61,28 @@ class FinishActivity : AppCompatActivity() {
                 // 에러 처리
             }
         })
+
+        activityFinishBinding.btnFinishAuthInsert.setOnClickListener {
+            firebaseUpdateAuth(activityFinishBinding.tvFinishUser.text.toString(), imageUrl.toString(), activityFinishBinding.tvHobbyText.text.toString())
+        }
+    }
+
+    private fun firebaseUpdateAuth(username: String, image: String, hobby: String) {
+        val user: FirebaseUser = auth.currentUser!!
+
+        val userUpdates = HashMap<String, Any>()
+
+        userUpdates["username"] = username
+        userUpdates["image"] = image
+        userUpdates["hobby"] = hobby
+
+        database.reference.child("users").child(user.uid).updateChildren(userUpdates)
+            .addOnCompleteListener {
+                print("데이터를 수정 완료하였습니다.")
+            }
+            .addOnFailureListener {
+                print("데이터 수정 중 오류가 발생하였습니다.")
+            }
     }
 
 }

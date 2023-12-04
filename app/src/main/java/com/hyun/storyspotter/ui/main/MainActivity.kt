@@ -1,4 +1,4 @@
-package com.hyun.storyspotter.ui
+package com.hyun.storyspotter.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,6 @@ import com.google.android.material.button.MaterialButton
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.adapter.OnboardingAdapter
 import com.hyun.storyspotter.model.OnboardingItem
-import com.hyun.storyspotter.ui.book.BookActivity
 import com.hyun.storyspotter.ui.register.RegisterActivity
 import com.hyun.storyspotter.viewmodel.OnBoardingViewModel
 

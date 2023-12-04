@@ -8,8 +8,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivitySplashBinding
-import com.hyun.storyspotter.event.AddAnimatorListener
-import com.hyun.storyspotter.ui.register.RegisterActivity
+import com.hyun.storyspotter.ui.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
