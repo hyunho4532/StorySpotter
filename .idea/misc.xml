@@ -5,7 +5,8 @@
       <map>
         <entry key="..\:/android/project/app/src/main/res/layout/activity_auth.xml" value="0.36614583333333334" />
         <entry key="..\:/android/project/app/src/main/res/layout/activity_book.xml" value="0.375" />
-        <entry key="..\:/android/project/app/src/main/res/layout/activity_book_detail.xml" value="0.25" />
+        <entry key="..\:/android/project/app/src/main/res/layout/activity_book_detail.xml" value="0.33" />
+        <entry key="..\:/android/project/app/src/main/res/layout/activity_book_read.xml" value="0.25" />
         <entry key="..\:/android/project/app/src/main/res/layout/activity_finish.xml" value="0.33" />
         <entry key="..\:/android/project/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/flutter_project/StorySpotter/app/src/main/res/drawable/drawable_book_search_button.xml" value="0.1945" />
@@ -25,7 +26,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

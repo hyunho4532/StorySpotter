@@ -18,8 +18,9 @@
         tools:targetApi="33"
         >
         <activity
-            android:name=".BookReadActivity"
-            android:exported="false"
+            android:name=".ui.book.read.BookReadActivity"
+            android:exported="true"
+            android:theme="@style/Theme.StorySpotter"
             />
         <activity
             android:name=".ui.book.detail.BookDetailActivity"
