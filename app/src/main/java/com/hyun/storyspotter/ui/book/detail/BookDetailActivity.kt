@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityBookDetailBinding
 import com.hyun.storyspotter.type.ImageType
+import com.hyun.storyspotter.ui.book.read.BookReadActivity
 import com.hyun.storyspotter.ui.register.finish.FinishActivity
 
 class BookDetailActivity : AppCompatActivity() {
@@ -36,6 +37,13 @@ class BookDetailActivity : AppCompatActivity() {
 
         activityBookDetailBinding.btnBookDetailLike.setOnClickListener {
             val intent = Intent(this@BookDetailActivity, FinishActivity::class.java)
+            intent.putExtra("imageUrl", image)
+            intent.putExtra("title", title)
+            startActivity(intent)
+        }
+
+        activityBookDetailBinding.btnBookDetailRead.setOnClickListener {
+            val intent = Intent(this@BookDetailActivity, BookReadActivity::class.java)
             intent.putExtra("imageUrl", image)
             intent.putExtra("title", title)
             startActivity(intent)
