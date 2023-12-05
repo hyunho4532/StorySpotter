@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hyun.storyspotter">
+    package="com.hyun.storyspotter"
+    >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,38 +15,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StorySpotter"
-        tools:targetApi="33">
+        tools:targetApi="33"
+        >
+        <activity
+            android:name=".BookReadActivity"
+            android:exported="false"
+            />
         <activity
             android:name=".ui.book.detail.BookDetailActivity"
             android:exported="true"
-            android:theme="@style/Theme.StorySpotter" />
+            android:theme="@style/Theme.StorySpotter"
+            />
         <activity
             android:name=".ui.register.finish.FinishActivity"
             android:exported="true"
-            android:theme="@style/Theme.StorySpotter" />
+            android:theme="@style/Theme.StorySpotter"
+            />
         <activity
             android:name=".ui.register.auth.AuthActivity"
             android:exported="true"
-            android:theme="@style/Theme.StorySpotter" />
+            android:theme="@style/Theme.StorySpotter"
+            />
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="true"
-            android:theme="@style/Theme.StorySpotter" />
+            android:theme="@style/Theme.StorySpotter"
+            />
         <activity
             android:name=".ui.login.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".ui.book.BookActivity"
             android:exported="true"
-            android:theme="@style/Theme.StorySpotter" />
+            android:theme="@style/Theme.StorySpotter"
+            />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.StorySpotter" />
+            android:theme="@style/Theme.StorySpotter"
+            />
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
