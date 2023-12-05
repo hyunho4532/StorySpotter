@@ -15,6 +15,9 @@ class BookReadActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBookReadBinding
 
+    private lateinit var startDay: String
+    private lateinit var endDay: String
+
     private val TAG = "BookReadActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,10 +35,12 @@ class BookReadActivity : AppCompatActivity() {
 
         binding.calendarview.setOnRangeSelectedListener(object: OnRangeSelectedListener {
             override fun onRangeSelected(widget: MaterialCalendarView, dates: MutableList<CalendarDay>) {
-                val startDay = dates[0].date.toString();
-                val endDay = dates.get(dates.size - 1).date.toString()
+                startDay = dates[0].date.toString();
+                endDay = dates.get(dates.size - 1).date.toString()
 
                 Log.v(TAG, "시작일 : $startDay, 종료일 : $endDay")
+
+                binding.tvBookReadStartDate.text = startDay
             }
         })
     }
