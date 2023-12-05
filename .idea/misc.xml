@@ -6,6 +6,10 @@
         <entry key="..\:/android/project/app/src/main/res/drawable/calendar_circle_gray.xml" value="0.1945" />
         <entry key="..\:/android/project/app/src/main/res/drawable/calendar_selector.xml" value="0.1955" />
         <entry key="..\:/android/project/app/src/main/res/drawable/calendar_selector_textcolor.xml" value="0.1945" />
+        <entry key="..\:/android/project/app/src/main/res/drawable/drawable_book_search_button.xml" value="0.1955" />
+        <entry key="..\:/android/project/app/src/main/res/drawable/ic_arrow_left.xml" value="0.1955" />
+        <entry key="..\:/android/project/app/src/main/res/drawable/shape_book_search.xml" value="0.1955" />
+        <entry key="..\:/android/project/app/src/main/res/drawable/splash_screen.xml" value="0.1955" />
         <entry key="..\:/android/project/app/src/main/res/drawable/transparent_calendar_element.xml" value="0.1955" />
         <entry key="..\:/android/project/app/src/main/res/layout/activity_auth.xml" value="0.36614583333333334" />
         <entry key="..\:/android/project/app/src/main/res/layout/activity_book.xml" value="0.375" />

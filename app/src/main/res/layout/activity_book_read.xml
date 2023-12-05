@@ -41,21 +41,20 @@
             app:layout_constraintTop_toTopOf="@+id/tv_read_book_title" />
 
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-            android:id="@+id/calendar_view"
+            android:id="@+id/calendarview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="24dp"
-            android:theme="@style/CalenderViewCustom"
-            app:mcv_selectionMode="range"
-            app:mcv_showOtherDates="all"
-            app:mcv_firstDayOfWeek="sunday"
-            app:mcv_rightArrow="@drawable/ic_arrow_right_cal"
-            app:mcv_leftArrow="@drawable/ic_arrow_left"
-            app:mcv_dateTextAppearance="@style/CalenderViewDateCustomText"
-            app:mcv_weekDayTextAppearance="@style/CalenderViewWeekCustomText"
-
-            />
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_book_read_time"
+            app:layout_constraintVertical_bias="0.0"
+            app:mcv_selectionMode="range" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
