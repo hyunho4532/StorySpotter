@@ -18,11 +18,14 @@
         tools:targetApi="33"
         >
         <activity
+            android:name=".ui.HomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.StorySpotter" />
+        <activity
             android:name=".ui.book.read.BookReadActivity"
             android:exported="true"
             android:theme="@style/Theme.StorySpotter"
             />
-
         <activity
             android:name=".ui.book.detail.BookDetailActivity"
             android:exported="true"
@@ -60,14 +63,13 @@
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"
-            android:theme="@style/SplashTheme">
-
+            android:theme="@style/SplashTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

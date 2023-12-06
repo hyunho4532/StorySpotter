@@ -7,6 +7,7 @@
         <entry key="..\:/android/project/app/src/main/res/drawable/calendar_selector.xml" value="0.1955" />
         <entry key="..\:/android/project/app/src/main/res/drawable/calendar_selector_textcolor.xml" value="0.1945" />
         <entry key="..\:/android/project/app/src/main/res/drawable/drawable_book_search_button.xml" value="0.1955" />
+        <entry key="..\:/android/project/app/src/main/res/drawable/fragment_profile.xml" value="0.323" />
         <entry key="..\:/android/project/app/src/main/res/drawable/ic_arrow_left.xml" value="0.1955" />
         <entry key="..\:/android/project/app/src/main/res/drawable/shape_book_search.xml" value="0.1955" />
         <entry key="..\:/android/project/app/src/main/res/drawable/splash_screen.xml" value="0.1955" />
@@ -16,7 +17,10 @@
         <entry key="..\:/android/project/app/src/main/res/layout/activity_book_detail.xml" value="0.33" />
         <entry key="..\:/android/project/app/src/main/res/layout/activity_book_read.xml" value="0.5" />
         <entry key="..\:/android/project/app/src/main/res/layout/activity_finish.xml" value="0.33" />
+        <entry key="..\:/android/project/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/android/project/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/android/project/app/src/main/res/layout/fragment_profile_fragmnet.xml" value="0.36614583333333334" />
+        <entry key="..\:/android/project/app/src/main/res/menu/navigation_items.xml" value="0.3651041666666667" />
         <entry key="..\:/flutter_project/StorySpotter/app/src/main/res/drawable/drawable_book_search_button.xml" value="0.1945" />
         <entry key="..\:/flutter_project/StorySpotter/app/src/main/res/drawable/drawable_onboarding_screen_button.xml" value="0.219" />
         <entry key="..\:/flutter_project/StorySpotter/app/src/main/res/drawable/shape_book_search.xml" value="0.1945" />
