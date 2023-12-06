@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityFinishBinding
 import com.hyun.storyspotter.type.ImageType
+import com.hyun.storyspotter.ui.HomeActivity
 import com.hyun.storyspotter.ui.book.BookActivity
 
 class FinishActivity : AppCompatActivity() {
@@ -88,7 +89,8 @@ class FinishActivity : AppCompatActivity() {
 
         database.reference.child("users").child(user.uid).updateChildren(userUpdates)
             .addOnCompleteListener {
-                print("데이터를 수정 완료하였습니다.")
+                val intent = Intent(this@FinishActivity, HomeActivity::class.java)
+                startActivity(intent)
             }
             .addOnFailureListener {
                 print("데이터 수정 중 오류가 발생하였습니다.")
