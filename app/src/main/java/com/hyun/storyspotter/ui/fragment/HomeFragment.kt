@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hyun.storyspotter.R
+import com.hyun.storyspotter.databinding.FragmentBookBinding
 
 class HomeFragment : Fragment() {
 

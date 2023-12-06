@@ -7,15 +7,17 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityBookDetailBinding
+import com.hyun.storyspotter.type.BookType
 import com.hyun.storyspotter.type.ImageType
 import com.hyun.storyspotter.ui.book.read.BookReadActivity
+import com.hyun.storyspotter.ui.register.auth.AuthActivity
 import com.hyun.storyspotter.ui.register.finish.FinishActivity
 
 class BookDetailActivity : AppCompatActivity() {
 
     private lateinit var activityBookDetailBinding: ActivityBookDetailBinding
 
-    private var imageType: ImageType = ImageType.UnAddImage
+    private var bookType: BookType = BookType.BookInsert
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,8 @@ class BookDetailActivity : AppCompatActivity() {
         val author = intent.getStringExtra("author")
         val description = intent.getStringExtra("description")
 
+        activityBookDetailBinding.btnBookDetailLike.text = bookType.toString()
+
         Glide.with(activityBookDetailBinding.root)
             .load(image)
             .into(activityBookDetailBinding.ivDetailBook)
@@ -36,17 +40,17 @@ class BookDetailActivity : AppCompatActivity() {
         activityBookDetailBinding.tvDetailBookDescription.text = description
 
         activityBookDetailBinding.btnBookDetailLike.setOnClickListener {
-            val intent = Intent(this@BookDetailActivity, FinishActivity::class.java)
-            intent.putExtra("imageUrl", image)
-            intent.putExtra("title", title)
-            startActivity(intent)
-        }
-
-        activityBookDetailBinding.btnBookDetailRead.setOnClickListener {
-            val intent = Intent(this@BookDetailActivity, BookReadActivity::class.java)
-            intent.putExtra("imageUrl", image)
-            intent.putExtra("title", title)
-            startActivity(intent)
+            if (bookType == BookType.BookInsert) {
+                val intent = Intent(this@BookDetailActivity, FinishActivity::class.java)
+                intent.putExtra("imageUrl", image)
+                intent.putExtra("title", title)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this@BookDetailActivity, AuthActivity::class.java)
+                intent.putExtra("imageUrl", image)
+                intent.putExtra("title", title)
+                startActivity(intent)
+            }
         }
     }
 }

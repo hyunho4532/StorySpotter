@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.Transaction
 import com.hyun.storyspotter.R
-import com.hyun.storyspotter.event.OnNavigationItemSelectedListener
+import com.hyun.storyspotter.event.LoadNavigationItemSelectedListener
 import com.hyun.storyspotter.ui.fragment.BookFragment
 import com.hyun.storyspotter.ui.fragment.HomeFragment
 import com.hyun.storyspotter.ui.fragment.ProfileFragment
@@ -25,7 +25,7 @@ class HomeActivity : AppCompatActivity() {
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.menu_bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener (
-            OnNavigationItemSelectedListener(fragmentManager, homeFragment, bookFragment, profileFragment)
+            LoadNavigationItemSelectedListener(fragmentManager, homeFragment, bookFragment, profileFragment)
         )
 
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()

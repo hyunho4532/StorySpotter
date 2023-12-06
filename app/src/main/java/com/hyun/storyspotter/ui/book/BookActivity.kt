@@ -10,6 +10,7 @@ import com.hyun.storyspotter.adapter.BookAdapter
 import com.hyun.storyspotter.databinding.ActivityBookBinding
 import com.hyun.storyspotter.manager.BookSearchManager
 import com.hyun.storyspotter.model.BookItem
+import com.hyun.storyspotter.type.BookType
 import com.hyun.storyspotter.type.ImageType
 import java.lang.NullPointerException
 
@@ -18,7 +19,6 @@ class BookActivity : AppCompatActivity() {
     private lateinit var bookAdapter: BookAdapter
     private val bookList = mutableListOf<BookItem>()
     private val bookSearchManager = BookSearchManager()
-    private var imageType: ImageType = ImageType.UnAddImage
 
     private lateinit var username: String
 
@@ -37,6 +37,15 @@ class BookActivity : AppCompatActivity() {
             ImageType.UnAddImage
         }
         bookBinding.imageType = imageType
+
+        val bookTypeString = intent.getStringExtra("bookType")
+
+        val bookType = if (bookTypeString == "BookInsert") {
+            BookType.BookInsert
+        } else {
+            BookType.BookUnInsert
+        }
+        bookBinding.tvBookSearchType.text = bookType.toString()
 
         val username = intent.getStringExtra("username")
         if (username != null) {
