@@ -9,7 +9,7 @@ import com.hyun.storyspotter.ui.fragment.BookFragment
 import com.hyun.storyspotter.ui.fragment.HomeFragment
 import com.hyun.storyspotter.ui.fragment.ProfileFragment
 
-class OnNavigationItemSelectedListener (
+class LoadNavigationItemSelectedListener (
     private val fragmentManager: FragmentManager,
     private val homeFragment: HomeFragment,
     private val bookFragment: BookFragment,
