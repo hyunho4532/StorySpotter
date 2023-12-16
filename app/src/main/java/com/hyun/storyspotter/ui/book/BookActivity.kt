@@ -19,10 +19,6 @@ class BookActivity : AppCompatActivity() {
     private lateinit var bookAdapter: BookAdapter
     private val bookList = mutableListOf<BookItem>()
     private val bookSearchManager = BookSearchManager()
-    private lateinit var exceptionDirectory: ExceptionDirectory
-    private var imageType: ImageType = ImageType.UnAddImage
-
-    private lateinit var username: String
 
     private lateinit var bookBinding: ActivityBookBinding
 
