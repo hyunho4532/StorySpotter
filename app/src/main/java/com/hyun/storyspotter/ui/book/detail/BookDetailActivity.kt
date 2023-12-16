@@ -16,8 +16,6 @@ import com.hyun.storyspotter.util.LoadBinding
 class BookDetailActivity : AppCompatActivity() {
 
     private lateinit var activityBookDetailBinding: ActivityBookDetailBinding
-    private lateinit var loadBinding: LoadBinding
-    private lateinit var bookItem: BookItem
 
     private var imageType: ImageType = ImageType.UnAddImage
 
@@ -32,13 +30,19 @@ class BookDetailActivity : AppCompatActivity() {
         val description = intent.getStringExtra("description")
         val publisher = intent.getStringExtra("publisher")
 
+        val imageIntentType = intent.getStringExtra("imageType")
+
+        imageType = if (imageIntentType == null) {
+            ImageType.UnAddImage
+        } else {
+            ImageType.AddImage
+        }
+
         loadBindingFromGetText(title, author, description, publisher)
 
         Glide.with(activityBookDetailBinding.root)
             .load(image)
             .into(activityBookDetailBinding.ivDetailBook)
-
-
 
         if (imageType == ImageType.UnAddImage) {
             activityBookDetailBinding.btnBookDetailLike.text = "책 등록 하기"

@@ -32,7 +32,7 @@ class BookActivity : AppCompatActivity() {
         bookBinding = DataBindingUtil.setContentView(this, R.layout.activity_book)
 
         val imageTypeString = intent.getStringExtra("imageType")
-        Log.d("ImageTypeString", imageTypeString.toString())
+
         val imageType = if (imageTypeString == "AddImage") {
             ImageType.AddImage
         } else {
@@ -63,6 +63,6 @@ class BookActivity : AppCompatActivity() {
     }
 
     private fun validationUsername() {
-        TODO("username(닉네임) 검사")
+
     }
 }
