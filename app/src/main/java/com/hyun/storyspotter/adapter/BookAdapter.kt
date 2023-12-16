@@ -13,7 +13,6 @@ import com.hyun.storyspotter.R
 import com.hyun.storyspotter.common.MakeTransitionAnimation
 import com.hyun.storyspotter.databinding.ItemSearchBookBinding
 import com.hyun.storyspotter.model.BookItem
-import java.security.PrivateKey
 
 class BookAdapter(
     private val books: List<BookItem>,
@@ -41,6 +40,8 @@ class BookAdapter(
         fun bind(book: BookItem) {
             binding.titleTextView.text = book.title
             binding.authorTextView.text = book.author
+            binding.descriptionTextView.text = book.description
+            binding.publisherTextView.text = book.publisher
 
             val options = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_foreground)
@@ -56,7 +57,7 @@ class BookAdapter(
             val pair = Pair<View, String>(binding.bookImageView, "imageTran")
 
             binding.root.setOnClickListener {
-                transitionAnimation.moveBookDetail(binding.root.context, book.image, book.title, pair)
+                transitionAnimation.moveBookDetail(binding.root.context, book.image, book.title, book.description, book.publisher, pair)
             }
         }
     }

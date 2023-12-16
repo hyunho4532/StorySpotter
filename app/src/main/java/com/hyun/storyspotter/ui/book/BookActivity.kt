@@ -11,6 +11,7 @@ import com.hyun.storyspotter.databinding.ActivityBookBinding
 import com.hyun.storyspotter.manager.BookSearchManager
 import com.hyun.storyspotter.model.BookItem
 import com.hyun.storyspotter.type.ImageType
+import com.hyun.storyspotter.util.ExceptionDirectory
 import java.lang.NullPointerException
 
 class BookActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class BookActivity : AppCompatActivity() {
     private lateinit var bookAdapter: BookAdapter
     private val bookList = mutableListOf<BookItem>()
     private val bookSearchManager = BookSearchManager()
+    private lateinit var exceptionDirectory: ExceptionDirectory
     private var imageType: ImageType = ImageType.UnAddImage
 
     private lateinit var username: String
@@ -39,11 +41,7 @@ class BookActivity : AppCompatActivity() {
         bookBinding.imageType = imageType
 
         val username = intent.getStringExtra("username")
-        if (username != null) {
-            bookBinding.tvBookSearchText.text = username
-        } else {
-            bookBinding.tvBookSearchText.text = "Default Username"
-        }
+        bookBinding.tvBookSearchText.text = username.toString()
 
         val nickName = intent.getStringExtra("nickName")
         bookBinding.tvBookSearchText.text = nickName.toString()
@@ -62,5 +60,9 @@ class BookActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun validationUsername() {
+        TODO("username(닉네임) 검사")
     }
 }
