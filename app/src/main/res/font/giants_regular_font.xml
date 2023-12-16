@@ -3,5 +3,5 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="500"
-        android:font="@font/taebaek" />
+        android:font="@font/giants_regular" />
 </font-family>

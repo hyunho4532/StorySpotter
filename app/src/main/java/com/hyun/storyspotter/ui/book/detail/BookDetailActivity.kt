@@ -11,10 +11,12 @@ import com.hyun.storyspotter.model.BookItem
 import com.hyun.storyspotter.type.ImageType
 import com.hyun.storyspotter.ui.book.read.BookReadActivity
 import com.hyun.storyspotter.ui.register.finish.FinishActivity
+import com.hyun.storyspotter.util.LoadBinding
 
 class BookDetailActivity : AppCompatActivity() {
 
     private lateinit var activityBookDetailBinding: ActivityBookDetailBinding
+    private lateinit var loadBinding: LoadBinding
     private lateinit var bookItem: BookItem
 
     private var imageType: ImageType = ImageType.UnAddImage
@@ -30,27 +32,44 @@ class BookDetailActivity : AppCompatActivity() {
         val description = intent.getStringExtra("description")
         val publisher = intent.getStringExtra("publisher")
 
+        loadBindingFromGetText(title, author, description, publisher)
+
         Glide.with(activityBookDetailBinding.root)
             .load(image)
             .into(activityBookDetailBinding.ivDetailBook)
 
+
+
+        if (imageType == ImageType.UnAddImage) {
+            activityBookDetailBinding.btnBookDetailLike.text = "책 등록 하기"
+        } else {
+            activityBookDetailBinding.btnBookDetailLike.text = "책 읽기"
+        }
+
+        activityBookDetailBinding.btnBookDetailLike.setOnClickListener {
+            if (imageType == ImageType.UnAddImage) {
+                val intent = Intent(this@BookDetailActivity, FinishActivity::class.java)
+                intent.putExtra("imageUrl", image)
+                intent.putExtra("title", title)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this@BookDetailActivity, BookReadActivity::class.java)
+                intent.putExtra("imageUrl", image)
+                intent.putExtra("title", title)
+                startActivity(intent)
+            }
+        }
+    }
+
+    private fun loadBindingFromGetText (
+        title: String?,
+        author: String?,
+        description: String?,
+        publisher: String?
+    ) {
         activityBookDetailBinding.tvDetailBook.text = title
         activityBookDetailBinding.tvDetailBookAuthor.text = author
         activityBookDetailBinding.tvDetailBookDescription.text = description
         activityBookDetailBinding.tvDetailBookPublisher.text = publisher
-
-        activityBookDetailBinding.btnBookDetailLike.setOnClickListener {
-            val intent = Intent(this@BookDetailActivity, FinishActivity::class.java)
-            intent.putExtra("imageUrl", image)
-            intent.putExtra("title", title)
-            startActivity(intent)
-        }
-
-        activityBookDetailBinding.btnBookDetailRead.setOnClickListener {
-            val intent = Intent(this@BookDetailActivity, BookReadActivity::class.java)
-            intent.putExtra("imageUrl", image)
-            intent.putExtra("title", title)
-            startActivity(intent)
-        }
     }
 }

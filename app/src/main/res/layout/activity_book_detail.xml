@@ -47,8 +47,10 @@
                         android:layout_marginTop="24dp"
                         android:gravity="center"
                         android:text="책 제목"
+                        android:lineSpacingExtra="6dp"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        android:fontFamily="@font/taebeak_font"
                         app:layout_constraintEnd_toEndOf="@+id/iv_detail_book"
                         app:layout_constraintStart_toStartOf="@+id/iv_detail_book"
                         app:layout_constraintTop_toBottomOf="@+id/iv_detail_book" />
@@ -79,40 +81,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_book_detail_like"
-                android:layout_width="160dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginBottom="24dp"
-                android:fontFamily="@font/kbo_dia_medium_font"
-                android:text="책 등록"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_detail_book_description"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <Button
-                android:id="@+id/btn_book_detail_read"
-                android:layout_width="160dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/kbo_dia_medium_font"
-                android:text="책 읽기"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/button_book_insert"
+                android:fontFamily="@font/giants_regular_font"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_detail_book_description"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_book_description" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="48dp"
                 android:text="간단 소개"
                 android:textColor="@color/black"
                 android:textSize="20sp"
