@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityBookDetailBinding
+import com.hyun.storyspotter.model.BookItem
 import com.hyun.storyspotter.type.ImageType
 import com.hyun.storyspotter.ui.book.read.BookReadActivity
 import com.hyun.storyspotter.ui.register.finish.FinishActivity
@@ -14,6 +15,7 @@ import com.hyun.storyspotter.ui.register.finish.FinishActivity
 class BookDetailActivity : AppCompatActivity() {
 
     private lateinit var activityBookDetailBinding: ActivityBookDetailBinding
+    private lateinit var bookItem: BookItem
 
     private var imageType: ImageType = ImageType.UnAddImage
 
@@ -26,6 +28,7 @@ class BookDetailActivity : AppCompatActivity() {
         val title = intent.getStringExtra("title")
         val author = intent.getStringExtra("author")
         val description = intent.getStringExtra("description")
+        val publisher = intent.getStringExtra("publisher")
 
         Glide.with(activityBookDetailBinding.root)
             .load(image)
@@ -34,6 +37,7 @@ class BookDetailActivity : AppCompatActivity() {
         activityBookDetailBinding.tvDetailBook.text = title
         activityBookDetailBinding.tvDetailBookAuthor.text = author
         activityBookDetailBinding.tvDetailBookDescription.text = description
+        activityBookDetailBinding.tvDetailBookPublisher.text = publisher
 
         activityBookDetailBinding.btnBookDetailLike.setOnClickListener {
             val intent = Intent(this@BookDetailActivity, FinishActivity::class.java)

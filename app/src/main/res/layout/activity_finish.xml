@@ -15,7 +15,7 @@
             android:layout_marginTop="46dp"
             android:text="Guest"
             android:textSize="24sp"
-            android:fontFamily="@font/font_family_kbo_dia"
+            android:fontFamily="@font/kbo_dia_medium_font"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
             android:layout_marginTop="48dp"
             android:text="님, 결과를 확인해주세요~!"
             android:textSize="22sp"
-            android:fontFamily="@font/font_family_kbo_dia"
+            android:fontFamily="@font/kbo_dia_medium_font"
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/tv_finish_user"
             app:layout_constraintTop_toTopOf="parent" />
@@ -134,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="40dp"
-            android:fontFamily="@font/font_family_kbo_dia"
+            android:fontFamily="@font/kbo_dia_medium_font"
             android:text="회원 등록하기"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -3,104 +3,146 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.book.detail.BookDetailActivity">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_detail_book"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
-            android:transitionName="imageTransition"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.book.detail.BookDetailActivity">
 
-        <TextView
-            android:id="@+id/tv_detail_book"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="책 제목"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/iv_detail_book"
-            app:layout_constraintStart_toStartOf="@+id/iv_detail_book"
-            app:layout_constraintTop_toBottomOf="@+id/iv_detail_book" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="400dp"
+                android:layout_margin="32dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                app:cardCornerRadius="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints">
 
-        <TextView
-            android:id="@+id/tv_detail_book_author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="지은이"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_detail_book"
-            app:layout_constraintStart_toStartOf="@+id/tv_detail_book"
-            app:layout_constraintTop_toBottomOf="@+id/tv_detail_book" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_book_detail_like"
-            android:layout_width="160dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="400dp"
-            android:layout_marginBottom="24dp"
-            android:fontFamily="@font/font_family_kbo_dia"
-            android:text="책 등록"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_detail_book" />
+                    <ImageView
+                        android:id="@+id/iv_detail_book"
+                        android:layout_width="220dp"
+                        android:layout_height="220dp"
+                        android:layout_marginTop="16dp"
+                        android:transitionName="imageTransition"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
 
-        <Button
-            android:id="@+id/btn_book_detail_read"
-            android:layout_width="160dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="400dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="24dp"
-            android:fontFamily="@font/font_family_kbo_dia"
-            android:text="책 읽기"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_detail_book" />
+                    <TextView
+                        android:id="@+id/tv_detail_book"
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:gravity="center"
+                        android:text="책 제목"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_detail_book"
+                        app:layout_constraintStart_toStartOf="@+id/iv_detail_book"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_detail_book" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="간단 소개"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/tv_detail_book"
-            app:layout_constraintTop_toBottomOf="@+id/tv_detail_book_author" />
+                    <TextView
+                        android:id="@+id/tv_detail_book_publisher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="출판사"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_book" />
 
-        <TextView
-            android:id="@+id/tv_detail_book_description"
-            android:layout_width="320dp"
-            android:layout_height="180dp"
-            android:layout_marginTop="8dp"
-            android:text="소개 줄거리입니다."
-            android:maxLines="9"
-            app:layout_constraintStart_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/tv_detail_book_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/tv_detail_book_description"
-            app:layout_constraintTop_toBottomOf="@+id/tv_detail_book_description" />
+            </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_detail_book_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="지은이"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_book_detail_like"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/kbo_dia_medium_font"
+                android:text="책 등록"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_book_description"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/btn_book_detail_read"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/kbo_dia_medium_font"
+                android:text="책 읽기"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_book_description"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="간단 소개"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/cardView"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_book_nickname" />
+
+            <TextView
+                android:id="@+id/tv_detail_book_description"
+                android:layout_width="320dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
+                android:maxLines="9"
+                android:text="소개 줄거리입니다."
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/tv_detail_book_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="닉네임"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </layout>

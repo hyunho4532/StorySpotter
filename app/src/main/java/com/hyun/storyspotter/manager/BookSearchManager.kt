@@ -33,7 +33,6 @@ class BookSearchManager {
             override fun onFailure(call: Call<BookSearchResponse>, t: Throwable) {
                 callback(null)
             }
-
         })
     }
 }
