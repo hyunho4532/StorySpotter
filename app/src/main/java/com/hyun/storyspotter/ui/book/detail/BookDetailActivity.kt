@@ -9,6 +9,7 @@ import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityBookDetailBinding
 import com.hyun.storyspotter.model.BookItem
 import com.hyun.storyspotter.type.ImageType
+import com.hyun.storyspotter.type.IntentType
 import com.hyun.storyspotter.ui.book.read.BookReadActivity
 import com.hyun.storyspotter.ui.register.finish.FinishActivity
 import com.hyun.storyspotter.util.LoadBinding
@@ -16,8 +17,6 @@ import com.hyun.storyspotter.util.LoadBinding
 class BookDetailActivity : AppCompatActivity() {
 
     private lateinit var activityBookDetailBinding: ActivityBookDetailBinding
-
-    private var imageType: ImageType = ImageType.UnAddImage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +29,7 @@ class BookDetailActivity : AppCompatActivity() {
         val description = intent.getStringExtra("description")
         val publisher = intent.getStringExtra("publisher")
 
-        val imageIntentType = intent.getStringExtra("imageType")
-
-        imageType = if (imageIntentType == null) {
-            ImageType.UnAddImage
-        } else {
-            ImageType.AddImage
-        }
+        val intentType = intent.getStringExtra("intentType")
 
         loadBindingFromGetText(title, author, description, publisher)
 
@@ -44,20 +37,20 @@ class BookDetailActivity : AppCompatActivity() {
             .load(image)
             .into(activityBookDetailBinding.ivDetailBook)
 
-        if (imageType == ImageType.UnAddImage) {
-            activityBookDetailBinding.btnBookDetailLike.text = "책 등록 하기"
-        } else {
+        if (intentType == IntentType.UnLikeMove.toString()) {
             activityBookDetailBinding.btnBookDetailLike.text = "책 읽기"
+        } else {
+            activityBookDetailBinding.btnBookDetailLike.text = "책 등록하기"
         }
 
         activityBookDetailBinding.btnBookDetailLike.setOnClickListener {
-            if (imageType == ImageType.UnAddImage) {
-                val intent = Intent(this@BookDetailActivity, FinishActivity::class.java)
+            if (intentType == IntentType.UnLikeMove.toString()) {
+                val intent = Intent(this@BookDetailActivity, BookReadActivity::class.java)
                 intent.putExtra("imageUrl", image)
                 intent.putExtra("title", title)
                 startActivity(intent)
             } else {
-                val intent = Intent(this@BookDetailActivity, BookReadActivity::class.java)
+                val intent = Intent(this@BookDetailActivity, FinishActivity::class.java)
                 intent.putExtra("imageUrl", image)
                 intent.putExtra("title", title)
                 startActivity(intent)

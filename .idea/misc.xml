@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/StorySpotter/app/src/main/res/layout/activity_book.xml" value="0.4669260700389105" />
+        <entry key="..\:/StorySpotter/app/src/main/res/layout/activity_book_detail.xml" value="0.25" />
+        <entry key="..\:/StorySpotter/app/src/main/res/layout/activity_book_read.xml" value="0.5" />
+        <entry key="..\:/StorySpotter/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/StorySpotter/app/src/main/res/menu/navigation_items.xml" value="0.1875" />
         <entry key="..\:/android/project/app/src/main/res/drawable/calendar_circle_gray.xml" value="0.1945" />
         <entry key="..\:/android/project/app/src/main/res/drawable/calendar_selector.xml" value="0.1955" />
         <entry key="..\:/android/project/app/src/main/res/drawable/calendar_selector_textcolor.xml" value="0.1945" />
@@ -41,7 +46,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

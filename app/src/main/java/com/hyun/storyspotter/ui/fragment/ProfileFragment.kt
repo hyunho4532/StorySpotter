@@ -1,10 +1,12 @@
 package com.hyun.storyspotter.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -12,12 +14,16 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.hyun.storyspotter.R
+import com.hyun.storyspotter.type.IntentType
+import com.hyun.storyspotter.ui.book.BookActivity
 import com.hyun.storyspotter.util.GetToLet
 
 class ProfileFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var myRef: DatabaseReference
+
+    private val intentType: IntentType = IntentType.UnLikeMove
 
     private val getToLet: GetToLet = GetToLet()
 
@@ -47,6 +53,15 @@ class ProfileFragment : Fragment() {
 
                 hobby?.let {
                     getToLet.getLetUsernameAndHobby(username, hobby, view)
+                }
+
+                val btnReadBookInsert: Button = view.findViewById(R.id.btn_read_book_insert)
+
+                btnReadBookInsert.setOnClickListener {
+                    val intent = Intent(requireContext(), BookActivity::class.java)
+                    intent.putExtra("intentType", intentType.toString())
+                    intent.putExtra("username", username.toString())
+                    startActivity(intent)
                 }
             }
 

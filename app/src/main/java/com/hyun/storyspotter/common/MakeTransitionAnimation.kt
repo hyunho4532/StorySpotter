@@ -16,6 +16,7 @@ class MakeTransitionAnimation {
         title: String,
         description: String,
         publisher: String,
+        intentType: String,
         pair: Pair<View, String>
     ) {
         val intent = Intent(context, BookDetailActivity::class.java)
@@ -23,6 +24,7 @@ class MakeTransitionAnimation {
         intent.putExtra("title", title)
         intent.putExtra("description", description)
         intent.putExtra("publisher", publisher)
+        intent.putExtra("intentType", intentType)
 
         val options = ActivityOptions.makeSceneTransitionAnimation (
             context as Activity,

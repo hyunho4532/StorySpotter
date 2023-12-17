@@ -16,6 +16,7 @@ import com.hyun.storyspotter.model.BookItem
 
 class BookAdapter(
     private val books: List<BookItem>,
+    private val intentType: String
 ) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     private val transitionAnimation = MakeTransitionAnimation()
@@ -57,7 +58,7 @@ class BookAdapter(
             val pair = Pair<View, String>(binding.bookImageView, "imageTran")
 
             binding.root.setOnClickListener {
-                transitionAnimation.moveBookDetail(binding.root.context, book.image, book.title, book.description, book.publisher, pair)
+                transitionAnimation.moveBookDetail(binding.root.context, book.image, book.title, book.description, book.publisher, intentType, pair)
             }
         }
     }

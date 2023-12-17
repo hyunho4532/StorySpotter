@@ -41,6 +41,7 @@ class BookReadActivity : AppCompatActivity() {
                 Log.v(TAG, "시작일 : $startDay, 종료일 : $endDay")
 
                 binding.tvBookReadStartDate.text = startDay
+                binding.tvBookReadEndDate.text = endDay
             }
         })
     }
