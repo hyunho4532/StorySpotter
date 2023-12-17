@@ -19,10 +19,6 @@ class BookActivity : AppCompatActivity() {
     private lateinit var bookAdapter: BookAdapter
     private val bookList = mutableListOf<BookItem>()
     private val bookSearchManager = BookSearchManager()
-    private lateinit var exceptionDirectory: ExceptionDirectory
-    private var imageType: ImageType = ImageType.UnAddImage
-
-    private lateinit var username: String
 
     private lateinit var bookBinding: ActivityBookBinding
 
@@ -32,7 +28,7 @@ class BookActivity : AppCompatActivity() {
         bookBinding = DataBindingUtil.setContentView(this, R.layout.activity_book)
 
         val imageTypeString = intent.getStringExtra("imageType")
-        Log.d("ImageTypeString", imageTypeString.toString())
+
         val imageType = if (imageTypeString == "AddImage") {
             ImageType.AddImage
         } else {
@@ -63,6 +59,6 @@ class BookActivity : AppCompatActivity() {
     }
 
     private fun validationUsername() {
-        TODO("username(닉네임) 검사")
+
     }
 }
