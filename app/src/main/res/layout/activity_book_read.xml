@@ -58,8 +58,33 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="310dp"
             android:text="시작 날짜"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/tv_book_read_time"
             app:layout_constraintTop_toBottomOf="@+id/tv_book_read_time" />
+
+        <TextView
+            android:id="@+id/tv_book_read_start_end_between"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="~"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_book_read_start_date"
+            app:layout_constraintStart_toEndOf="@+id/tv_book_read_start_date"
+            app:layout_constraintTop_toTopOf="@+id/tv_book_read_start_date" />
+
+        <TextView
+            android:id="@+id/tv_book_read_end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="끝 날짜"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_book_read_start_end_between"
+            app:layout_constraintStart_toEndOf="@+id/tv_book_read_start_end_between"
+            app:layout_constraintTop_toTopOf="@+id/tv_book_read_start_end_between" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
