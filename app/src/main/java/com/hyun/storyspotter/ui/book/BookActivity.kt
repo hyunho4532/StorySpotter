@@ -10,9 +10,6 @@ import com.hyun.storyspotter.adapter.BookAdapter
 import com.hyun.storyspotter.databinding.ActivityBookBinding
 import com.hyun.storyspotter.manager.BookSearchManager
 import com.hyun.storyspotter.model.BookItem
-import com.hyun.storyspotter.type.ImageType
-import com.hyun.storyspotter.util.ExceptionDirectory
-import java.lang.NullPointerException
 
 class BookActivity : AppCompatActivity() {
 
@@ -27,23 +24,23 @@ class BookActivity : AppCompatActivity() {
 
         bookBinding = DataBindingUtil.setContentView(this, R.layout.activity_book)
 
-        val imageTypeString = intent.getStringExtra("imageType")
+        val intentTypeString = intent.getStringExtra("intentType")
 
-        val imageType = if (imageTypeString == "AddImage") {
-            ImageType.AddImage
+        if (intentTypeString == "UnLikeMove") {
+            val username = intent.getStringExtra("username")
+            bookBinding.tvBookSearchText.text = username.toString()
+            Log.e("username", username.toString())
+            bookBinding.tvBookType.text = intentTypeString.toString()
+            bookBinding.tvBookSearchSubText.text = "님, 읽고 싶은 책을 선택해주세요!"
         } else {
-            ImageType.UnAddImage
+            val nickName = intent.getStringExtra("nickName")
+            bookBinding.tvBookSearchText.text = nickName.toString()
+            bookBinding.tvBookType.text = null
+            bookBinding.tvBookSearchSubText.text = "님, 좋아하는 책을 선택해주세요!"
         }
-        bookBinding.imageType = imageType
-
-        val username = intent.getStringExtra("username")
-        bookBinding.tvBookSearchText.text = username.toString()
-
-        val nickName = intent.getStringExtra("nickName")
-        bookBinding.tvBookSearchText.text = nickName.toString()
 
         bookBinding.recyclerView.layoutManager = LinearLayoutManager(this)
-        bookAdapter = BookAdapter(bookList)
+        bookAdapter = BookAdapter(bookList, bookBinding.tvBookType.text.toString())
         bookBinding.recyclerView.adapter = bookAdapter
 
         bookBinding.btnBookSearch.setOnClickListener {
@@ -56,9 +53,5 @@ class BookActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    private fun validationUsername() {
-
     }
 }
