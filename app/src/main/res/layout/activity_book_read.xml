@@ -7,26 +7,67 @@
         android:layout_height="match_parent"
         tools:context=".ui.book.read.BookReadActivity">
 
-        <ImageView
-            android:id="@+id/iv_read_book"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginTop="30dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="350dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_read_book_title"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text=""
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="@+id/iv_read_book"
-            app:layout_constraintStart_toStartOf="@+id/iv_read_book"
-            app:layout_constraintTop_toBottomOf="@+id/iv_read_book" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_read_book"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tv_read_book_title"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="start"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_read_book"
+                    app:layout_constraintStart_toEndOf="@+id/iv_read_book"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.2" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/tv_read_book_title"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_read_book_title" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="@+id/textView6"
+                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_book_read_time"
@@ -38,17 +79,16 @@
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_read_book_title" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/calendarview"
             android:layout_width="330dp"
             android:layout_height="270dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_book_read_time"
             app:layout_constraintTop_toBottomOf="@+id/tv_book_read_time"
             app:mcv_selectionMode="range" />
 
@@ -56,10 +96,11 @@
             android:id="@+id/tv_book_read_start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="310dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="320dp"
             android:text="시작 날짜"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/tv_book_read_time"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_book_read_time" />
 
         <TextView
@@ -84,7 +125,16 @@
             app:layout_constraintStart_toEndOf="@+id/tv_book_read_start_end_between"
             app:layout_constraintTop_toTopOf="@+id/tv_book_read_start_end_between" />
 
-
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_book_read_insert"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_book_insert"
+            android:text="책 읽기 등록 완료"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

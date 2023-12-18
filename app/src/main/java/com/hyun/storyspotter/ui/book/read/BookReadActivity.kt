@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.database
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityBookReadBinding
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -18,11 +22,17 @@ class BookReadActivity : AppCompatActivity() {
     private lateinit var startDay: String
     private lateinit var endDay: String
 
+    private lateinit var database: DatabaseReference
+    private lateinit var auth: FirebaseAuth
+
     private val TAG = "BookReadActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_book_read)
+
+        database = Firebase.database.reference
+        auth = FirebaseAuth.getInstance()
 
         val imageUrl = intent.getStringExtra("imageUrl")
         val title = intent.getStringExtra("title")
@@ -44,5 +54,15 @@ class BookReadActivity : AppCompatActivity() {
                 binding.tvBookReadEndDate.text = endDay
             }
         })
+
+        val bookInfo = mapOf(
+            "title" to binding.tvReadBookTitle.text.toString(),
+            "author" to "Author Name",
+            "publishedYear" to 2023
+        )
+
+        binding.btnBookReadInsert.setOnClickListener {
+            database.child("books").child(auth.currentUser!!.uid).child("read").setValue(bookInfo)
+        }
     }
 }
