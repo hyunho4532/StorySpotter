@@ -23,4 +23,13 @@ class GetToLet {
             }
         }
     }
+
+    fun getLetFavorite(username: String?, view: View) {
+        val favoriteText = view.findViewById<TextView>(R.id.tv_book_favorite_text)
+        "${username}님이 좋아하는 책은?".also { username ->
+            run {
+                favoriteText.text = username
+            }
+        }
+    }
 }
