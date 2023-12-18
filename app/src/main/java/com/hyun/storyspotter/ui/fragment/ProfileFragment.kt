@@ -36,8 +36,11 @@ class ProfileFragment : Fragment() {
     ): View {
         val view: View = inflater.inflate(R.layout.fragment_profile, container, false)
 
+        val bookTitle = view.findViewById<TextView>(R.id.tv_book_result_read_title)
         val bookReadStartDay = view.findViewById<TextView>(R.id.tv_book_result_read_start_date)
         val bookReadEndDay = view.findViewById<TextView>(R.id.tv_book_result_read_end_date)
+
+        val bookReadStatus = view.findViewById<TextView>(R.id.tv_book_read_status)
 
         auth = FirebaseAuth.getInstance()
 
@@ -53,9 +56,20 @@ class ProfileFragment : Fragment() {
 
         bookReadMyRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                val title = snapshot.child("title").getValue(String::class.java)
                 val imageUrl = snapshot.child("imageUrl").getValue(String::class.java)
                 val startDay = snapshot.child("startDay").getValue(String::class.java)
                 val endDay = snapshot.child("endDay").getValue(String::class.java)
+
+                title?.let {
+                    bookTitle.text = title.toString()
+                }
+
+                if (bookTitle.text.toString() == null) {
+                    bookReadStatus.text = "책을 안 읽고 있으시네요."
+                } else {
+                    bookReadStatus.text = "쉿! 현재 책을 읽고 있어요!"
+                }
 
                 imageUrl?.let {
                     Glide.with(requireContext())
@@ -90,6 +104,10 @@ class ProfileFragment : Fragment() {
 
                 hobby?.let {
                     getToLet.getLetUsernameAndHobby(username, hobby, view)
+                }
+
+                username?.let {
+                    getToLet.getLetFavorite(username, view)
                 }
 
                 val btnReadBookInsert: Button = view.findViewById(R.id.btn_read_book_insert)

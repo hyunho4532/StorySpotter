@@ -79,14 +79,15 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView4"
             android:layout_width="0dp"
             android:layout_height="170dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2">
+            app:layout_constraintTop_toBottomOf="@+id/tv_book_read_status">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -120,7 +121,7 @@
                     android:id="@+id/tv_book_result_read_start_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="28dp"
+                    android:layout_marginStart="16dp"
                     android:text="시작 날짜"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/read_book_image"
@@ -149,9 +150,43 @@
                     app:layout_constraintStart_toEndOf="@+id/textView9"
                     app:layout_constraintTop_toTopOf="@+id/textView9" />
 
+                <TextView
+                    android:id="@+id/tv_book_result_read_title"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="start"
+                    android:text="책 제목"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/read_book_image"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_book_read_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/cardView2"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+        <TextView
+            android:id="@+id/tv_book_favorite_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="현호님이 좋아하는 책은?"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/cardView4"
+            app:layout_constraintTop_toBottomOf="@+id/cardView4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
