@@ -48,6 +48,7 @@ class BookDetailActivity : AppCompatActivity() {
                 val intent = Intent(this@BookDetailActivity, BookReadActivity::class.java)
                 intent.putExtra("imageUrl", image)
                 intent.putExtra("title", title)
+                intent.putExtra("author", author)
                 startActivity(intent)
             } else {
                 val intent = Intent(this@BookDetailActivity, FinishActivity::class.java)

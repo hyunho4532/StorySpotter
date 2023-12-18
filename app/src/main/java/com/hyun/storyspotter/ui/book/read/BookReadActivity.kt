@@ -1,5 +1,6 @@
 package com.hyun.storyspotter.ui.book.read
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityBookReadBinding
+import com.hyun.storyspotter.ui.HomeActivity
+import com.hyun.storyspotter.ui.fragment.ProfileFragment
+import com.hyun.storyspotter.ui.main.MainActivity
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnRangeSelectedListener
@@ -36,6 +40,7 @@ class BookReadActivity : AppCompatActivity() {
 
         val imageUrl = intent.getStringExtra("imageUrl")
         val title = intent.getStringExtra("title")
+        val author = intent.getStringExtra("author")
 
         Glide.with(binding.root)
             .load(imageUrl)
@@ -43,26 +48,29 @@ class BookReadActivity : AppCompatActivity() {
 
         binding.tvReadBookTitle.text = title
 
-        binding.calendarview.setOnRangeSelectedListener(object: OnRangeSelectedListener {
-            override fun onRangeSelected(widget: MaterialCalendarView, dates: MutableList<CalendarDay>) {
-                startDay = dates[0].date.toString();
-                endDay = dates.get(dates.size - 1).date.toString()
+        binding.calendarview.setOnRangeSelectedListener { _, dates ->
+            startDay = dates[0].date.toString();
+            endDay = dates.get(dates.size - 1).date.toString()
 
-                Log.v(TAG, "시작일 : $startDay, 종료일 : $endDay")
+            Log.v(TAG, "시작일 : $startDay, 종료일 : $endDay")
 
-                binding.tvBookReadStartDate.text = startDay
-                binding.tvBookReadEndDate.text = endDay
+            binding.tvBookReadStartDate.text = startDay
+            binding.tvBookReadEndDate.text = endDay
+
+            val bookInfo = mapOf(
+                "imageUrl" to imageUrl,
+                "title" to binding.tvReadBookTitle.text.toString(),
+                "author" to author,
+                "startDay" to startDay,
+                "endDay" to endDay
+            )
+
+            binding.btnBookReadInsert.setOnClickListener {
+                database.child("books").child(auth.currentUser!!.uid).child("read").setValue(bookInfo)
+
+                val intent = Intent(this@BookReadActivity, HomeActivity::class.java)
+                startActivity(intent)
             }
-        })
-
-        val bookInfo = mapOf(
-            "title" to binding.tvReadBookTitle.text.toString(),
-            "author" to "Author Name",
-            "publishedYear" to 2023
-        )
-
-        binding.btnBookReadInsert.setOnClickListener {
-            database.child("books").child(auth.currentUser!!.uid).child("read").setValue(bookInfo)
         }
     }
 }

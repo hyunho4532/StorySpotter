@@ -17,6 +17,14 @@
         android:theme="@style/Theme.StorySpotter"
         tools:targetApi="33"
         >
+
+        <activity
+            android:name="com.hyun.storyspotter.ui.fragment.ProfileFragment"
+            android:exported="true"
+            android:theme="@style/Theme.StorySpotter"
+            tools:ignore="Instantiatable"
+            />
+
         <activity
             android:name=".ui.HomeActivity"
             android:exported="true"
