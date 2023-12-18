@@ -1,12 +1,14 @@
 package com.hyun.storyspotter.ui.fragment
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Switch
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -19,6 +21,8 @@ import com.hyun.storyspotter.R
 import com.hyun.storyspotter.type.IntentType
 import com.hyun.storyspotter.ui.book.BookActivity
 import com.hyun.storyspotter.util.GetToLet
+import java.time.chrono.IsoChronology
+import java.util.*
 
 class ProfileFragment : Fragment() {
 
@@ -41,6 +45,20 @@ class ProfileFragment : Fragment() {
         val bookReadEndDay = view.findViewById<TextView>(R.id.tv_book_result_read_end_date)
 
         val bookReadStatus = view.findViewById<TextView>(R.id.tv_book_read_status)
+
+        val welcomeHello = view.findViewById<TextView>(R.id.tv_welcome_hello)
+
+        val switch = view.findViewById<Switch>(R.id.switch1)
+
+        switch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                setLocale("en")
+            } else {
+                setLocale("ko")
+            }
+
+            updateText()
+        }
 
         auth = FirebaseAuth.getInstance()
 
@@ -126,5 +144,22 @@ class ProfileFragment : Fragment() {
         })
 
         return view
+    }
+
+    private fun setLocale(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.locale = locale
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
+    private fun updateText() {
+
+        val welcomeHello = view!!.findViewById<TextView>(R.id.tv_welcome_hello)
+
+        val helloText = getString(R.string.profile_fragment_hello)
+        welcomeHello.text = helloText
     }
 }

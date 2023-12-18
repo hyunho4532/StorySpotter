@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/taebeak_font"
-                    android:text="안녕하세요!"
+                    android:text="@string/profile_fragment_hello"
                     android:textColor="@color/black"
                     android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_welcome_introduce"
@@ -187,6 +187,17 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/cardView4"
             app:layout_constraintTop_toBottomOf="@+id/cardView4" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="Switch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_book_favorite_text" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
