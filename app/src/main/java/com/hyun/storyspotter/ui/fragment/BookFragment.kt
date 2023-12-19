@@ -8,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.hyun.storyspotter.R
+import com.hyun.storyspotter.type.IntentType
 import com.hyun.storyspotter.ui.book.BookActivity
 import com.hyun.storyspotter.ui.book.detail.BookDetailActivity
 
 class BookFragment : Fragment() {
+
+    val intentType: IntentType = IntentType.RecommendationMove
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +26,7 @@ class BookFragment : Fragment() {
 
         floatingActionButton.setOnClickListener {
             val intent = Intent(requireContext(), BookActivity::class.java)
+            intent.putExtra("intentType", intentType.toString())
             startActivity(intent)
         }
 
