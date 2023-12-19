@@ -2,15 +2,11 @@ package com.hyun.storyspotter.ui.book.detail
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityBookDetailBinding
@@ -26,6 +22,7 @@ class BookDetailActivity : AppCompatActivity() {
 
     val db = FirebaseFirestore.getInstance()
     val auth = FirebaseAuth.getInstance()
+    private lateinit var image: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +30,7 @@ class BookDetailActivity : AppCompatActivity() {
         activityBookDetailBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_book_detail)
 
-        val image = intent.getStringExtra("image")
+        image = intent.getStringExtra("image").toString()
         val title = intent.getStringExtra("title")
         val author = intent.getStringExtra("author")
         val description = intent.getStringExtra("description")
@@ -90,12 +87,12 @@ class BookDetailActivity : AppCompatActivity() {
 
     private fun addFirebaseStoreFromBookReCommandText() {
         val books: MutableMap<String, Any> = HashMap()
-        books["first"] = "Ada"
-        books["last"] = "Lovelace"
-        books["born"] = 1815
+        books["imageUrl"] = image
+        books["name"] = "Lovelace"
+        books["title"] = 1815
 
         db.collection("books")
-            .document(auth.currentUser!!.uid)
+            .document(auth.currentUser!!.uid.toString())
             .set(books)
             .addOnSuccessListener {
 
