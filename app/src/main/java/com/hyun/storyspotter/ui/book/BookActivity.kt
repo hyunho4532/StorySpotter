@@ -71,7 +71,6 @@ class BookActivity : AppCompatActivity() {
             bookBinding.tvBookType.text = intentTypeString.toString()
             bookBinding.tvBookSearchSubText.text = "님, 읽고 싶은 책을 선택해주세요!"
         } else if (intentTypeString == "RecommendationMove") {
-            bookBinding.tvBookType.text = intentTypeString.toString()
             bookBinding.tvBookSearchSubText.text = "님, 추천해주고 싶은 책을 선택해주세요!"
         } else {
             val nickName = intent.getStringExtra("nickName")
