@@ -119,12 +119,13 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_auth_insert"
             android:layout_width="340dp"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"
             android:text="등록하기"
+            android:background="@drawable/drawable_button_google_login"
             app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
             app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
