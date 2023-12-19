@@ -1,24 +1,31 @@
 package com.hyun.storyspotter.ui.book.detail
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import com.hyun.storyspotter.R
 import com.hyun.storyspotter.databinding.ActivityBookDetailBinding
-import com.hyun.storyspotter.model.BookItem
-import com.hyun.storyspotter.type.ImageType
 import com.hyun.storyspotter.type.IntentType
 import com.hyun.storyspotter.ui.HomeActivity
 import com.hyun.storyspotter.ui.book.read.BookReadActivity
 import com.hyun.storyspotter.ui.register.finish.FinishActivity
-import com.hyun.storyspotter.util.LoadBinding
+
 
 class BookDetailActivity : AppCompatActivity() {
 
     private lateinit var activityBookDetailBinding: ActivityBookDetailBinding
+
+    val db = FirebaseFirestore.getInstance()
+    val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +65,7 @@ class BookDetailActivity : AppCompatActivity() {
             } else if (intentType == IntentType.RecommendationMove.toString()) {
                 val intent = Intent(this@BookDetailActivity, HomeActivity::class.java)
                 Toast.makeText(this, "다른 사람들에게 책 추천을 했습니다.", Toast.LENGTH_SHORT).show()
+                addFirebaseStoreFromBookReCommandText()
                 startActivity(intent)
             } else {
                 val intent = Intent(this@BookDetailActivity, FinishActivity::class.java)
@@ -78,5 +86,22 @@ class BookDetailActivity : AppCompatActivity() {
         activityBookDetailBinding.tvDetailBookAuthor.text = author
         activityBookDetailBinding.tvDetailBookDescription.text = description
         activityBookDetailBinding.tvDetailBookPublisher.text = publisher
+    }
+
+    private fun addFirebaseStoreFromBookReCommandText() {
+        val books: MutableMap<String, Any> = HashMap()
+        books["first"] = "Ada"
+        books["last"] = "Lovelace"
+        books["born"] = 1815
+
+        db.collection("books")
+            .document(auth.currentUser!!.uid)
+            .set(books)
+            .addOnSuccessListener {
+
+            }
+            .addOnFailureListener {
+
+            }
     }
 }
