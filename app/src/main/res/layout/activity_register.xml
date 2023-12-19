@@ -42,12 +42,13 @@
             app:layout_constraintStart_toStartOf="@+id/tv_register_sub_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_register_sub_title" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_google"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="Google로 계속하기"
+            android:background="@drawable/drawable_button_google_login"
             app:layout_constraintEnd_toEndOf="@+id/tv_register_sub_explain"
             app:layout_constraintStart_toStartOf="@+id/tv_register_sub_explain"
             app:layout_constraintTop_toBottomOf="@+id/tv_register_sub_explain" />
