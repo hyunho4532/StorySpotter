@@ -18,7 +18,9 @@
         <entry key="..\:/StorySpotter/app/src/main/res/layout/fragment_book.xml" value="0.25" />
         <entry key="..\:/StorySpotter/app/src/main/res/layout/fragment_home.xml" value="0.36614583333333334" />
         <entry key="..\:/StorySpotter/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
-        <entry key="..\:/StorySpotter/app/src/main/res/layout/item_recommand_book.xml" value="0.5" />
+        <entry key="..\:/StorySpotter/app/src/main/res/layout/item_container_onboarding.xml" value="0.36614583333333334" />
+        <entry key="..\:/StorySpotter/app/src/main/res/layout/item_recommand_book.xml" value="0.75" />
+        <entry key="..\:/StorySpotter/app/src/main/res/layout/item_search_book.xml" value="0.36614583333333334" />
         <entry key="..\:/StorySpotter/app/src/main/res/menu/navigation_items.xml" value="0.1875" />
         <entry key="..\:/android/project/app/src/main/res/drawable/calendar_circle_gray.xml" value="0.1945" />
         <entry key="..\:/android/project/app/src/main/res/drawable/calendar_selector.xml" value="0.1955" />
