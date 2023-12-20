@@ -22,7 +22,10 @@ class BookDetailActivity : AppCompatActivity() {
 
     val db = FirebaseFirestore.getInstance()
     val auth = FirebaseAuth.getInstance()
+
     private lateinit var image: String
+    private lateinit var title: String
+    private lateinit var author: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +34,8 @@ class BookDetailActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_book_detail)
 
         image = intent.getStringExtra("image").toString()
-        val title = intent.getStringExtra("title")
-        val author = intent.getStringExtra("author")
+        title = intent.getStringExtra("title").toString()
+        author = intent.getStringExtra("author").toString()
         val description = intent.getStringExtra("description")
         val publisher = intent.getStringExtra("publisher")
 
@@ -88,8 +91,8 @@ class BookDetailActivity : AppCompatActivity() {
     private fun addFirebaseStoreFromBookReCommandText() {
         val books: MutableMap<String, Any> = HashMap()
         books["imageUrl"] = image
-        books["name"] = "Lovelace"
-        books["title"] = 1815
+        books["title"] = title
+        books["author"] = author
 
         db.collection("books")
             .document(auth.currentUser!!.uid.toString())

@@ -34,7 +34,7 @@ class BookFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
 
-    private lateinit var listView: ListView
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,7 +47,7 @@ class BookFragment : Fragment() {
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
 
-        listView = _fragmentBookBinding!!.listView
+        recyclerView = _fragmentBookBinding!!.mainMenu
 
         var commandBookList = arrayListOf<CommandBook>()
 
@@ -61,14 +61,8 @@ class BookFragment : Fragment() {
                 }
 
                 val commandBookAdapter = CommandBookAdapter(requireContext(), commandBookList)
-                listView.adapter = commandBookAdapter
+                recyclerView.adapter = commandBookAdapter
             }
-
-        _fragmentBookBinding!!.floatingActionButton.setOnClickListener {
-            val intent = Intent(requireContext(), BookActivity::class.java)
-            intent.putExtra("intentType", intentType.toString())
-            startActivity(intent)
-        }
 
         return root
     }
