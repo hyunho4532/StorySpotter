@@ -15,6 +15,9 @@ import com.hyun.storyspotter.databinding.ActivityBookBinding
 import com.hyun.storyspotter.manager.BookSearchManager
 import com.hyun.storyspotter.model.BookItem
 import com.hyun.storyspotter.util.GetToLet
+import com.jakewharton.rxbinding4.widget.textChanges
+import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class BookActivity : AppCompatActivity() {
 
@@ -30,6 +33,13 @@ class BookActivity : AppCompatActivity() {
     private lateinit var firebaseDatabase: FirebaseDatabase
 
     private val getToLet: GetToLet = GetToLet()
+
+    /**
+        val observableTextQuery = Observable
+            .create(/* observable 추가 */)
+            .debounce(500, TimeUnit.MILLISECONDS)  //입력 후 0.5간 추가 입력이 없어야만 작동
+            .subscribeOn(Schedulers.io())  //새로운 스레드에서 작업
+     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,15 +93,18 @@ class BookActivity : AppCompatActivity() {
         bookAdapter = BookAdapter(bookList, bookBinding.tvBookType.text.toString())
         bookBinding.recyclerView.adapter = bookAdapter
 
-        bookBinding.btnBookSearch.setOnClickListener {
-            bookSearchManager.searchBooks(bookBinding.etBookSearch.text.toString(), 10, "0qMOlEnC8vFb9mMNLWKU", "pVr1B38BBk") { books ->
-                runOnUiThread {
-                    books?.let {
-                        bookList.addAll(it)
-                        bookAdapter.notifyDataSetChanged()
+        bookBinding.etBookSearch.textChanges()
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+            .subscribe {
+                bookSearchManager.searchBooks(bookBinding.etBookSearch.text.toString(), 10, "0qMOlEnC8vFb9mMNLWKU", "pVr1B38BBk") { books ->
+                    runOnUiThread {
+                        books?.let {
+                            bookList.addAll(it)
+                            bookAdapter.notifyDataSetChanged()
+                        }
                     }
                 }
             }
-        }
     }
 }
