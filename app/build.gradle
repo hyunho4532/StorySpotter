@@ -91,4 +91,7 @@ dependencies {
 
     // CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // RxJava
+    implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
 }

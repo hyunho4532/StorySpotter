@@ -84,7 +84,7 @@ class BookActivity : AppCompatActivity() {
         bookBinding.recyclerView.adapter = bookAdapter
 
         bookBinding.btnBookSearch.setOnClickListener {
-            bookSearchManager.searchBooks(bookBinding.etBookSearch.text.toString(), bookBinding.etBookSearchCount.text.toString().toInt(), "0qMOlEnC8vFb9mMNLWKU", "pVr1B38BBk") { books ->
+            bookSearchManager.searchBooks(bookBinding.etBookSearch.text.toString(), 10, "0qMOlEnC8vFb9mMNLWKU", "pVr1B38BBk") { books ->
                 runOnUiThread {
                     books?.let {
                         bookList.addAll(it)
